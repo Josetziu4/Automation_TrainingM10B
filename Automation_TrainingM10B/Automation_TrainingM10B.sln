@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation_TrainingM10B", "Automation_TrainingM10B.csproj", "{E1B48014-E722-43D7-9268-16B68B8D7369}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1B48014-E722-43D7-9268-16B68B8D7369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B48014-E722-43D7-9268-16B68B8D7369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B48014-E722-43D7-9268-16B68B8D7369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B48014-E722-43D7-9268-16B68B8D7369}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {243C2313-C945-4F45-82A8-6EB9FD71E2DE}
+	EndGlobalSection
+EndGlobal

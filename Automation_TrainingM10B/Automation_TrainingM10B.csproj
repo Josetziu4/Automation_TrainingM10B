@@ -89,16 +89,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base Files\BaseTest.cs" />
+    <Compile Include="Data Models\Reward File.cs" />
+    <Compile Include="Data Models\Reward.cs" />
     <Compile Include="Page Objects\LinkedIn_LoginPage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\ReportManager.cs" />
+    <Compile Include="Test Cases\Data_Driven_Test.cs" />
+    <Compile Include="Test Cases\Data_Model_Tests.cs" />
     <Compile Include="Test Cases\Test_LinkedIn_Login.cs" />
+    <Compile Include="Test Data\Data.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

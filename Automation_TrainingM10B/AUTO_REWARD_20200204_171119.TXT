@@ -1,0 +1,2 @@
+MemberId|RewardId|RewardName|RewardDate|ExpirationDate
+1|0|TestReward1|2/4/2020 5:11:19 PM|2/4/2020 5:11:19 PM

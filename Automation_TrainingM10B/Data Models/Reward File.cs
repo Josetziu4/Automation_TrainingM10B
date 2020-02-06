@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutomationTrainingM10B.Reporting;
+using Automation_TrainingM10B.Reporting;
 
 namespace Automation_TrainingM10B.Data_Models
 {

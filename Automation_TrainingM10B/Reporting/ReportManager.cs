@@ -9,7 +9,7 @@ using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using OpenQA.Selenium;
 
-namespace AutomationTrainingM10B.Reporting
+namespace Automation_TrainingM10B.Reporting
 {
     class ReportManager
     {

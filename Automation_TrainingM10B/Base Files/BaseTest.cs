@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-
 using AutomationTrainingM10B.Reporting;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+using Oracle.ManagedDataAccess.Client;
 
 namespace AutomationTrainingM10B.Base_Files
 {
@@ -28,6 +28,11 @@ namespace AutomationTrainingM10B.Base_Files
         public ExtentTest exTestCase;
         public ExtentTest exTestStep;
 
+        public OracleConnection dbConnection;
+        private string strConnectionString;
+        public OracleCommand dbCommand;
+        public OracleDataReader dbReader;
+
         [OneTimeSetUp]
         public void BeforeAllTests()
         {
@@ -43,6 +48,21 @@ namespace AutomationTrainingM10B.Base_Files
             manager.fnReportSetUp(htmlReporter, extent);
 
             exTestSuite = extent.CreateTest(TestContext.CurrentContext.Test.Name);
+
+            strConnectionString = $"User Id = aperez;" +
+                $"password = something something;" +
+                $"Data Source=tytora-n01.brierley.com:1521/bpqa01;" +
+                $"Pooling = false;";
+            dbConnection = new OracleConnection(strConnectionString);
+            try
+            {
+                dbConnection.Open();
+            }
+            catch(Exception x)
+            {
+                Console.Write(x.Message);
+            }
+;
         }
 
         [SetUp]
@@ -63,6 +83,7 @@ namespace AutomationTrainingM10B.Base_Files
         [OneTimeTearDown]
         public void AfterAllTests()
         {
+            dbConnection.Close();
             extent.Flush();
             //driver.Quit();
         }

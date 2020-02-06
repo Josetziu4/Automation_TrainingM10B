@@ -69,3 +69,4 @@ C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_Train
 C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\obj\Debug\Automation_TrainingM10B.csproj.CopyComplete
 C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\obj\Debug\Automation_TrainingM10B.exe
 C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\obj\Debug\Automation_TrainingM10B.pdb
+C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\bin\Debug\Oracle.ManagedDataAccess.dll

@@ -76,7 +76,7 @@ namespace Automation_TrainingM10B.Base_Files
         [TearDown]
         public void AfterTest()
         {
-            //driver.Close();
+            driver.Close();
         }
 
         [OneTimeTearDown]

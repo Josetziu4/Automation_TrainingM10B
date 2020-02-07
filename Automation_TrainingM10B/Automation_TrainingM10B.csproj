@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base Files\BaseTest.cs" />
+    <Compile Include="Data Models\Member_Model.cs" />
     <Compile Include="Data Models\Reward File.cs" />
     <Compile Include="Data Models\Reward.cs" />
     <Compile Include="Page Objects\LinkedIn_LoginPage.cs" />

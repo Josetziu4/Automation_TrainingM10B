@@ -10,6 +10,7 @@ using Automation_TrainingM10B.Reporting;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using Oracle.ManagedDataAccess.Client;
+using Renci.SshNet;
 
 namespace Automation_TrainingM10B.Base_Files
 {
@@ -33,6 +34,9 @@ namespace Automation_TrainingM10B.Base_Files
         public OracleCommand dbCommand;
         public OracleDataReader dbReader;
 
+        public SftpClient sftpConnection;
+        public ConnectionInfo sftpConnectionString;
+
         [OneTimeSetUp]
         public void BeforeAllTests()
         {
@@ -50,13 +54,19 @@ namespace Automation_TrainingM10B.Base_Files
             exTestSuite = extent.CreateTest(TestContext.CurrentContext.Test.Name);
 
             strConnectionString = $"User Id={Environment.GetEnvironmentVariable("bpAuto_OracleUser", EnvironmentVariableTarget.User)};" +
-                $"password={Environment.GetEnvironmentVariable("bpAuto_OraclePassword", EnvironmentVariableTarget.User  )};" +
+                $"password={Environment.GetEnvironmentVariable("bpAuto_OraclePassword", EnvironmentVariableTarget.User)};" +
                 $"Data Source=tytora-n01.brierley.com:1521/bpqa01;" +
                 $"Pooling=false;";
+
+            sftpConnectionString = new ConnectionInfo("tytora-n01", 22, Environment.GetEnvironmentVariable("bpAuto_SFTPUser", EnvironmentVariableTarget.User), new PasswordAuthenticationMethod(Environment.GetEnvironmentVariable("bpAuto_SFTPUser", EnvironmentVariableTarget.User), Environment.GetEnvironmentVariable("bpAuto_SFTPPassword", EnvironmentVariableTarget.User)));
+
             dbConnection = new OracleConnection(strConnectionString);
+            sftpConnection = new SftpClient(sftpConnectionString);
+
             try
             {
                 dbConnection.Open();
+                sftpConnection.Connect();
             }
             catch(Exception x)
             {
@@ -83,6 +93,7 @@ namespace Automation_TrainingM10B.Base_Files
         public void AfterAllTests()
         {
             dbConnection.Close();
+            sftpConnection.Disconnect();
             extent.Flush();
             //driver.Quit();
         }

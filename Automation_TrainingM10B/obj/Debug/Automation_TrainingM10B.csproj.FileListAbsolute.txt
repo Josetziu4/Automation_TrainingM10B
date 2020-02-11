@@ -34,3 +34,5 @@ C:\Users\JoseFranciscoTziuDzi\source\repos\Automation_TrainingM10B\Automation_Tr
 C:\Users\JoseFranciscoTziuDzi\source\repos\Automation_TrainingM10B\Automation_TrainingM10B\obj\Debug\Automation_TrainingM10B.exe
 C:\Users\JoseFranciscoTziuDzi\source\repos\Automation_TrainingM10B\Automation_TrainingM10B\obj\Debug\Automation_TrainingM10B.pdb
 C:\Users\JoseFranciscoTziuDzi\source\repos\Automation_TrainingM10B\Automation_TrainingM10B\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\JoseFranciscoTziuDzi\Source\Repos\Automation_TrainingM10B\Automation_TrainingM10B\bin\Debug\Renci.SshNet.dll
+C:\Users\JoseFranciscoTziuDzi\Source\Repos\Automation_TrainingM10B\Automation_TrainingM10B\bin\Debug\Renci.SshNet.xml

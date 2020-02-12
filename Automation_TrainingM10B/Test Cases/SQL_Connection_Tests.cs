@@ -39,6 +39,15 @@ namespace Automation_TrainingM10B.Test_Cases
                             WHERE VC.LOYALTYIDNUMBER = 'APA851'";
             Member_Model member = database.QuerySingleRow<Member_Model>(query);
             member.GetDetails();
+
+            query = @"SELECT VC.LOYALTYIDNUMBER,LM.FIRSTNAME,LM.LASTNAME
+                            FROM BP_ESS.LW_VIRTUALCARD VC
+                            JOIN BP_ESS.LW_LOYALTYMEMBER LM ON VC.IPCODE = LM.IPCODE";
+            List<Member_Model> members = database.Query<Member_Model>(query).ToList();
+            foreach(var item in members)
+            {
+                item.GetDetails();
+            }
         }
     }
 }

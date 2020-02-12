@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using Automation_TrainingM10B.Data_Models;
 using Automation_TrainingM10B.Base_Files;
 using NUnit.Framework;
+using Renci.SshNet.Sftp;
+using System.IO;
+using Automation_TrainingM10B.Reporting;
 
 namespace Automation_TrainingM10B.Test_Cases
 {
     class Data_Model_Tests:BaseTest
     {
+        ReportManager mngr = new ReportManager();
         [Test]
         public void RewardFile_Test()
         {
@@ -30,11 +34,28 @@ namespace Automation_TrainingM10B.Test_Cases
 
             Console.WriteLine(sftpConnection.WorkingDirectory);
 
+            List<SftpFile> sftpFiles = sftpConnection.ListDirectory("/opt/app/oracle/flatfiles/ess/lw/qa_a/in/completed").ToList();
+            
+            foreach(SftpFile file in sftpFiles )
+            {
+                Console.WriteLine(file.Name);
+            }
+
+            //sftpConnection.UploadFile(uploadStream,rewardFile.FileName,true);
+
             //ADD RECORD TO FILE
             rewardFile.Rewards.Add(reward1);
 
             //WRITE FILE
             rewardFile.fnCreateFile();
+
+            //var uploadStream = File.OpenRead(manager.fnGetDataFeedsPath() + "ESS_TRANSACTION_20200204_144542.txt.dec");
+            //sftpConnection.UploadFile(uploadStream, "ESS_TRANSACTION_20200204_144542.txt.dec", true);
+
+            sftpConnection.ChangeDirectory("/opt/app/oracle/flatfiles/ess/lw/qa_a/in/completed");
+
+            Stream downloadedFile = File.OpenWrite(manager.fnGetDataFeedsPath() + "file.txt");
+            sftpConnection.DownloadFile("/opt/app/oracle/flatfiles/ess/lw/qa_a/in/completed/ESS_TRANSACTION_20200211_113040.txt.dec", downloadedFile);
         }
     }
 }

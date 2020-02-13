@@ -54,7 +54,7 @@ namespace Automation_TrainingM10B.Test_Cases
         {
             List<string> values = new List<string>() { "value1", "value2", "value3", "value4", "value5", "value33" };
 
-            var valuesFound = values.FindAll(str => str.Contains("3"));
+            var valuesFound = values.FindAll(val => val.Contains("3"));
 
             Console.WriteLine("Elements containing '3':");
             foreach (string element in valuesFound)

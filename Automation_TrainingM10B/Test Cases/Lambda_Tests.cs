@@ -15,11 +15,12 @@ namespace Automation_TrainingM10B.Test_Cases
         [Test]
         public void Lambda_Test()
         {
-            IEnumerable<int> evensMethod = numbers.Where(IsEven);
-            IEnumerable<int> evensDelegate = numbers.Where(delegate (int number) { return (number % 2 == 0); });
-            IEnumerable<int> evensLambda = numbers.Where(number => number % 2 == 0);
-            Func<int,bool> test = number => number % 2 == 0;
-            var x = test(3);
+            IEnumerable<int> evensMethod = numbers.Where(IsEven); //METHOD
+            IEnumerable<int> evensDelegate = numbers.Where(delegate (int number) { return (number % 2 == 0); }); //DELEGATE
+            IEnumerable<int> evensLambda = numbers.Where(number => number < lessThan); // LAMBDA
+            Func<int, int, int> test = (a, b) => a + b;
+            var x = test(10,11);
+            x = test(4,11);
         }
 
         public static List<int> FindEvenNumbers(List<int> numbers)

@@ -11,6 +11,9 @@ using AutomationTrainingM10B.Reporting;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 
+using Oracle.ManagedDataAccess.Client;
+using Renci.SshNet;
+
 namespace AutomationTrainingM10B.Base_Files
 {
     class BaseTest
@@ -28,6 +31,16 @@ namespace AutomationTrainingM10B.Base_Files
         public ExtentTest exTestCase;
         public ExtentTest exTestStep;
 
+        //modulo 10
+        public OracleConnection dbConnection;
+        private string strConnectionString;
+        public OracleCommand dbCommand;
+        public OracleDataReader dbReader;
+
+        public SftpClient sftpConnection;
+        public ConnectionInfo sftpConnectionString;
+
+
         [OneTimeSetUp]
         public void BeforeAllTests()
         {
@@ -43,6 +56,28 @@ namespace AutomationTrainingM10B.Base_Files
             manager.fnReportSetUp(htmlReporter, extent);
 
             exTestSuite = extent.CreateTest(TestContext.CurrentContext.Test.Name);
+
+            //Modulo 10
+            strConnectionString = $"User Id=atun;" +
+                $"password=Alex1422.;" +
+                $"Data Source=tytora-n01.brierley.com:1521/bpqa01;" +
+                $"Pooling=false;";
+
+            sftpConnectionString = new ConnectionInfo("tytora-n01",22, "UserName", new PasswordAuthenticationMethod("UserName","Password"));
+
+            sftpConnection = new SftpClient(sftpConnectionString);
+            dbConnection = new OracleConnection(strConnectionString);
+
+            try
+            {
+                dbConnection.Open();
+                sftpConnection.Connect();
+            }
+            catch(Exception x)
+            {
+                Console.Write(x.Message);
+            }
+            //modulo 10
         }
 
         [SetUp]
@@ -63,6 +98,8 @@ namespace AutomationTrainingM10B.Base_Files
         [OneTimeTearDown]
         public void AfterAllTests()
         {
+            dbConnection.Close();
+            sftpConnection.Disconnect();
             extent.Flush();
             //driver.Quit();
         }

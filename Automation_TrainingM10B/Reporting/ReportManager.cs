@@ -9,7 +9,7 @@ using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using OpenQA.Selenium;
 
-namespace AutomationTrainingM10B.Reporting
+namespace Automation_TrainingM10B.Reporting
 {
     class ReportManager
     {
@@ -64,6 +64,23 @@ namespace AutomationTrainingM10B.Reporting
             pexTestStep.Log(Status.Info, "Step Screenshot", MediaEntityBuilder.CreateScreenCaptureFromPath(strScreenshotPath).Build());
 
             //return strScreenshotPath;
+        }
+
+        public string fnGetDataFeedsPath()
+        {
+            string strExecutionPath = System.Reflection.Assembly.GetCallingAssembly().CodeBase; //Get NUnit DLL execution folder
+            string strBaseDirectory = strExecutionPath.Substring(0, strExecutionPath.IndexOf("bin")); //Get Base Directory
+            strBaseDirectory = new Uri(strBaseDirectory).LocalPath; //Transform Directory format to match local machine
+
+            string strReportDirectory = strBaseDirectory + "DataFeeds";
+            if (!Directory.Exists(strReportDirectory))
+            {
+                Directory.CreateDirectory(strReportDirectory);
+            }
+
+            string strReportPath = strReportDirectory + "\\";  //ExtentReport_MMDDYYYY_HHMMSS.html
+
+            return strReportPath;
         }
     }
 }

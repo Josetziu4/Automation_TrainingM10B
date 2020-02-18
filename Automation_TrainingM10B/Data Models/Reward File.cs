@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutomationTrainingM10B.Reporting;
+using Automation_TrainingM10B.Reporting;
 
 namespace Automation_TrainingM10B.Data_Models
 {
@@ -23,7 +23,7 @@ namespace Automation_TrainingM10B.Data_Models
 
         public void fnCreateFile()
         {
-            StreamWriter file = File.CreateText(FileName);
+            StreamWriter file = File.CreateText(fnGetDataFeedsPath() + FileName);
             file.WriteLine(Header);
             foreach(Reward reward in Rewards)
             {
@@ -31,6 +31,7 @@ namespace Automation_TrainingM10B.Data_Models
             }
             file.Close();
         }
+
 
         /*
          * Header

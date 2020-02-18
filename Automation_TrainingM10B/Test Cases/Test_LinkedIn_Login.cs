@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AventStack.ExtentReports;
-using AutomationTrainingM10B.Base_Files;
-using AutomationTrainingM10B.Page_Objects;
+using Automation_TrainingM10B.Base_Files;
+using Automation_TrainingM10B.Page_Objects;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 
-namespace AutomationTrainingM10B.Test_Cases
+namespace Automation_TrainingM10B.Test_Cases
 {
     class LinkedIn_LoginTests : BaseTest
     {

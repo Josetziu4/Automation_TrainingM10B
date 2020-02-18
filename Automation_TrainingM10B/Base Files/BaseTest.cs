@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-using AutomationTrainingM10B.Reporting;
+using Automation_TrainingM10B.Reporting;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using Oracle.ManagedDataAccess.Client;
+using Renci.SshNet;
 
-namespace AutomationTrainingM10B.Base_Files
+namespace Automation_TrainingM10B.Base_Files
 {
     class BaseTest
     {
@@ -32,6 +33,9 @@ namespace AutomationTrainingM10B.Base_Files
         public string strConnectionString;    //Our credentials and server
         public OracleCommand dbCommand;       //Query execution
         public OracleDataReader dbReader;     //Read the db response
+
+        public SftpClient sftpConnection;
+        public ConnectionInfo sftpConnectionString;
 
         [OneTimeSetUp]
         public void BeforeAllTests()
@@ -54,10 +58,14 @@ namespace AutomationTrainingM10B.Base_Files
                                   $"Data Source= tytora-n01.brierley.com:1521/bpqa01;" +
                                   $"Pooling=false;";
 
+            sftpConnectionString = new ConnectionInfo("tytora-n01", 22, "lrodriguez", new PasswordAuthenticationMethod("lrodriguez", "Diciembre2014!"));
+            sftpConnection = new SftpClient(sftpConnectionString);
+
             dbConnection = new OracleConnection(strConnectionString);
                 try
             {
                 dbConnection.Open();
+                sftpConnection.Connect();
             }
             catch(Exception ex)
             {
@@ -76,13 +84,14 @@ namespace AutomationTrainingM10B.Base_Files
         [TearDown]
         public void AfterTest()
         {
-            //driver.Close();
+            driver.Close();
         }
 
         [OneTimeTearDown]
         public void AfterAllTests()
         {
             dbConnection.Close();
+            sftpConnection.Disconnect();
             extent.Flush();
             //driver.Quit();
         }

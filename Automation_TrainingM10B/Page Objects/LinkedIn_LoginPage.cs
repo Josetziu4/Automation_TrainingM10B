@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutomationTrainingM10B.Base_Files;
+using Automation_TrainingM10B.Base_Files;
 using OpenQA.Selenium;
 
-namespace AutomationTrainingM10B.Page_Objects
+namespace Automation_TrainingM10B.Page_Objects
 {
     class LinkedIn_LoginPageModel : BaseTest
     {

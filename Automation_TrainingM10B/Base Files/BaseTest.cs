@@ -10,6 +10,7 @@ using AutomationTrainingM10B.Reporting;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using Oracle.ManagedDataAccess.Client;
+using Renci.SshNet;
 
 namespace AutomationTrainingM10B.Base_Files
 {
@@ -33,6 +34,10 @@ namespace AutomationTrainingM10B.Base_Files
         public OracleCommand dbCommand;
         public OracleDataReader dbReader;
 
+        public SftpClient sftpConnection;
+        ConnectionInfo sftpConnectionString;
+
+
         [OneTimeSetUp]
         public void BeforeAllTests()
         {
@@ -53,10 +58,16 @@ namespace AutomationTrainingM10B.Base_Files
                 $"password = something something;" +
                 $"Data Source=tytora-n01.brierley.com:1521/bpqa01;" +
                 $"Pooling = false;";
+
+            sftpConnectionString = new ConnectionInfo("tytora-n01",22,"username",new PasswordAuthenticationMethod("username","password"));
+            dbConnection = new OracleConnection(strConnectionString);
+            sftpConnection = new SftpClient(sftpConnectionString);
+
             dbConnection = new OracleConnection(strConnectionString);
             try
             {
                 dbConnection.Open();
+                sftpConnection.Connect();
             }
             catch(Exception x)
             {
@@ -84,6 +95,7 @@ namespace AutomationTrainingM10B.Base_Files
         public void AfterAllTests()
         {
             dbConnection.Close();
+            sftpConnection.Disconnect();
             extent.Flush();
             //driver.Quit();
         }

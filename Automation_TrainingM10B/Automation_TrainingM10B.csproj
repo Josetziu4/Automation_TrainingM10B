@@ -64,6 +64,9 @@
     <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
     </Reference>
@@ -92,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base Files\BaseTest.cs" />
+    <Compile Include="Base Files\QueryUtils.cs" />
+    <Compile Include="Data Models\Member_Mode.cs" />
     <Compile Include="Data Models\Reward File.cs" />
     <Compile Include="Data Models\Reward.cs" />
     <Compile Include="Page Objects\LinkedIn_LoginPage.cs" />
@@ -100,6 +105,8 @@
     <Compile Include="Reporting\ReportManager.cs" />
     <Compile Include="Test Cases\Data_Driven_Test.cs" />
     <Compile Include="Test Cases\Data_Model_Tests.cs" />
+    <Compile Include="Test Cases\Lambda_Tests.cs" />
+    <Compile Include="Test Cases\Linq_Tests.cs" />
     <Compile Include="Test Cases\SQL_Connection_Tests.cs" />
     <Compile Include="Test Cases\Test_LinkedIn_Login.cs" />
     <Compile Include="Test Data\Data.cs" />

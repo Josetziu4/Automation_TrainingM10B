@@ -70,3 +70,5 @@ C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_Train
 C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\obj\Debug\Automation_TrainingM10B.exe
 C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\obj\Debug\Automation_TrainingM10B.pdb
 C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\bin\Debug\Renci.SshNet.dll
+C:\Users\aperez\Desktop\Modulo 10\Clase\Automation_TrainingM10B\Automation_TrainingM10B\bin\Debug\Renci.SshNet.xml

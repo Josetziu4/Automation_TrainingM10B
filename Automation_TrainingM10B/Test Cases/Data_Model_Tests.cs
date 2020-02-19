@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Automation_TrainingM10B.Data_Models;
 using NUnit.Framework;
+using AutomationTrainingM10B.Base_Files;
 
 
 namespace Automation_TrainingM10B.Test_Cases
 {
-    class Data_Model_Tests
+    class Data_Model_Tests:BaseTest
     {
         [Test]
         public void RewardFile_Test()
@@ -23,6 +24,10 @@ namespace Automation_TrainingM10B.Test_Cases
             reward1.RewardPoints = 20;
             reward1.RewardStartDate = DateTime.Now;
             reward1.RewardEndDate = DateTime.Now;
+
+            Console.WriteLine(sftpConnection.WorkingDirectory);
+
+            sftpConnection.ChangeDirectory("/opt/app/oracle/flatfiles/tcp/lw/qa_a/in/auto");
 
             //ADD RECORD TO FILE
             rewardfile.Rewards.Add(reward1);

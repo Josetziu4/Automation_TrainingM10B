@@ -65,5 +65,24 @@ namespace AutomationTrainingM10B.Reporting
 
             //return strScreenshotPath;
         }
+
+            public string fnGetDataFeedsPath()
+            {
+                string strExecutionPath = System.Reflection.Assembly.GetCallingAssembly().CodeBase; //Get NUnit DLL execution folder
+                string strBaseDirectory = strExecutionPath.Substring(0, strExecutionPath.IndexOf("bin")); //Get Base Directory
+                strBaseDirectory = new Uri(strBaseDirectory).LocalPath; //Transform Directory format to match local machine
+
+                string strReportDirectory = strBaseDirectory + "ExtentReports";
+                if (!Directory.Exists(strReportDirectory))
+                {
+                    Directory.CreateDirectory(strReportDirectory);
+                }
+
+            string strReportPath = strReportDirectory + "\\";
+
+                return strReportPath;
+            }
+
+        }
     }
-}
+

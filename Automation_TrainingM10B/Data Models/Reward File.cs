@@ -23,7 +23,7 @@ namespace Automation_TrainingM10B.Data_Models
 
         public void fnCreateFile()
         {
-            StreamWriter file = File.CreateText(FileName);
+            StreamWriter file = File.CreateText(fnGetDataFeedsPath() + FileName);
             file.WriteLine(Header);
 
             foreach(Reward reward in Rewards)

@@ -78,7 +78,7 @@ namespace Automation_TrainingM10B.Base_Files
         public void BeforeTest()
         {
             driver = new ChromeDriver();
-            driver.Url = url;
+            driver.Url = "http://www.google.com";
 
             exTestCase = exTestSuite.CreateNode(TestContext.CurrentContext.Test.Name);
         }

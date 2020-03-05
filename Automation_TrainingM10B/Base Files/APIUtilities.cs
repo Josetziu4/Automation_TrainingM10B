@@ -12,8 +12,8 @@ namespace Automation_TrainingM10B.Base_Files
     class APIUtilities
     {
         //VARIABLE
-        HttpWebRequest HttpRequest;
-        HttpWebResponse HttpResponse;
+        HttpWebRequest objHttpRequest;
+        HttpWebResponse objHttpResponse;
         Stream DataStream;
         StreamReader DataReader;
         StreamWriter DataWriter;
@@ -43,25 +43,30 @@ namespace Automation_TrainingM10B.Base_Files
 
         }
 
-        public void fnGetMethod(string pstrAPIUrl)
+        //This method allows us to send the url of the API and return the response as an Object
+        public HttpWebResponse fnGetMethod(string pstrAPIUrl)
         {          
-            HttpRequest = (HttpWebRequest)WebRequest.Create(pstrAPIUrl); // we send the URL of the GET API
-            HttpRequest.Method = "GET";
-            HttpRequest.ContentType = "application/json";
-            HttpRequest.KeepAlive = false;
+            objHttpRequest = (HttpWebRequest)WebRequest.Create(pstrAPIUrl); // we send the URL of the GET API
+            objHttpRequest.Method = "GET";
+            objHttpRequest.ContentType = "application/json";
+            objHttpRequest.KeepAlive = false;
+            objHttpResponse = (HttpWebResponse)objHttpRequest.GetResponse();
+            return objHttpResponse;
+        }
 
-            HttpResponse = (HttpWebResponse)HttpRequest.GetResponse();
-
-            using (DataStream = HttpResponse.GetResponseStream())
+        //This method allows you to console write the response contained in the Response Object
+        public string fnWriteTheResponse(HttpWebResponse pobjHttpResponse)
+        {
+            using (DataStream = pobjHttpResponse.GetResponseStream())
             {
                 DataReader = new StreamReader(DataStream);
                 Payload = DataReader.ReadToEnd();
             }
-            HttpResponse.Close();
-
+            pobjHttpResponse.Close();
             Console.WriteLine(Payload);
-
+            return Payload;
         }
+
 
         public void fnPostMethod()
         {

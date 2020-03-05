@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base Files\APIUtilities.cs" />
     <Compile Include="Base Files\BaseTest.cs" />
     <Compile Include="Base Files\QueryUtils.cs" />
     <Compile Include="Data Models\Member_Model.cs" />

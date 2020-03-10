@@ -61,7 +61,7 @@ namespace Automation_TrainingM10B.Test_Cases
 
             Console.WriteLine(sftpConnection.WorkingDirectory);
 
-            //List<SftpFile> sftpFiles = sftpConnection.ListDirectory("/opt/app/oracle/flatfiles/ess/lw/qa_a/in/completed").ToList();
+            List<SftpFile> sftpFiles = sftpConnection.ListDirectory("/opt/app/oracle/flatfiles/ess/lw/qa_a/in/completed").ToList();
 
             FileStream uploadStream = File.OpenRead(file.FileName);
 
@@ -71,7 +71,7 @@ namespace Automation_TrainingM10B.Test_Cases
             FileStream downloadedFile = File.OpenWrite("Dummier.txt");
             sftpConnection.DownloadFile("Dummy.txt", downloadedFile);
             downloadedFile.Close();
-            //Console.WriteLine(Payload);
+            Console.WriteLine(Payload);
 
         }
 

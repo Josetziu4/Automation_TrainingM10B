@@ -11,6 +11,8 @@ using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using Oracle.ManagedDataAccess.Client;
 using Renci.SshNet;
+using System.Net;
+using System.IO;
 
 namespace Automation_TrainingM10B.Base_Files
 {
@@ -20,7 +22,8 @@ namespace Automation_TrainingM10B.Base_Files
         public string url;
         public string username;
         public string password;
-
+        
+        /*Variables for Reports*/
         public ReportManager manager;
         public ExtentV3HtmlReporter htmlReporter;
         public ExtentReports extent;
@@ -28,14 +31,30 @@ namespace Automation_TrainingM10B.Base_Files
         public ExtentTest exTestSuite;
         public ExtentTest exTestCase;
         public ExtentTest exTestStep;
+        /**/
 
+        /*Variables for DB connection*/
         public OracleConnection dbConnection;
         private string strConnectionString;
         public OracleCommand dbCommand;
         public OracleDataReader dbReader;
+        /**/
 
+        /*Variables for SFTP connection*/
         public SftpClient sftpConnection;
         public ConnectionInfo sftpConnectionString;
+        /**/
+
+        /*Variables for API calls*/
+        public HttpWebRequest HttpRequest;
+        public HttpWebResponse HttpResponse;
+
+        public Stream DataStream;
+        public StreamReader DataReader;
+        public StreamWriter DataWriter;
+
+        public string Payload;
+        /**/
 
         [OneTimeSetUp]
         public void BeforeAllTests()

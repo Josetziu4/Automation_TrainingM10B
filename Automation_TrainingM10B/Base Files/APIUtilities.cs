@@ -12,15 +12,7 @@ namespace Automation_TrainingM10B.Base_Files
 {
     class APIUtilities : BaseTest
     {
-        HttpWebRequest HttpRequest;
-        HttpWebResponse HttpResponse;
-
-        Stream DataStream;
-        StreamReader DataReader;
-        StreamWriter DataWriter;
-
-        string Payload;
-
+        
         public void GetAPI()
         {
             try

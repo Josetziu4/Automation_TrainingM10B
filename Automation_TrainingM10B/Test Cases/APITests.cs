@@ -28,7 +28,11 @@ namespace Automation_TrainingM10B.Test_Cases
         {
             try
             {
-                objAPI.PostAPI("Alex JTP3",96255.20,48);
+                string strName = "Alex JTP";
+                double dblSalary = 96255.20;
+                int intAge = 48;
+
+                objAPI.PostAPI(strName,dblSalary,intAge);
             }
             catch (Exception ex)
             {

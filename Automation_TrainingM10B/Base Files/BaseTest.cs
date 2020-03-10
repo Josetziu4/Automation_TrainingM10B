@@ -17,9 +17,9 @@ namespace Automation_TrainingM10B.Base_Files
     class BaseTest
     {
         public IWebDriver driver;
-        public string url;
-        public string username;
-        public string password;
+        //public string url;
+        //public string username;
+        //public string password;
 
         public ReportManager manager;
         public ExtentV3HtmlReporter htmlReporter;
@@ -30,7 +30,6 @@ namespace Automation_TrainingM10B.Base_Files
         public ExtentTest exTestStep;
 
         public OracleConnection dbConnection;
-        private string strConnectionString;
         public OracleCommand dbCommand;
         public OracleDataReader dbReader;
 
@@ -40,10 +39,6 @@ namespace Automation_TrainingM10B.Base_Files
         [OneTimeSetUp]
         public void BeforeAllTests()
         {
-            url = Environment.GetEnvironmentVariable("url", EnvironmentVariableTarget.User);
-            username = Environment.GetEnvironmentVariable("username", EnvironmentVariableTarget.User);
-            password = Environment.GetEnvironmentVariable("password", EnvironmentVariableTarget.User);
-
             manager = new ReportManager();
 
             extent = new ExtentReports();
@@ -52,16 +47,6 @@ namespace Automation_TrainingM10B.Base_Files
             manager.fnReportSetUp(htmlReporter, extent);
 
             exTestSuite = extent.CreateTest(TestContext.CurrentContext.Test.Name);
-
-            strConnectionString = $"User Id={Environment.GetEnvironmentVariable("bpAuto_OracleUser", EnvironmentVariableTarget.User)};" +
-                $"password={Environment.GetEnvironmentVariable("bpAuto_OraclePassword", EnvironmentVariableTarget.User)};" +
-                $"Data Source=tytora-n01.brierley.com:1521/bpqa01;" +
-                $"Pooling=false;";
-
-            sftpConnectionString = new ConnectionInfo("tytora-n01", 22, Environment.GetEnvironmentVariable("bpAuto_SFTPUser", EnvironmentVariableTarget.User), new PasswordAuthenticationMethod(Environment.GetEnvironmentVariable("bpAuto_SFTPUser", EnvironmentVariableTarget.User), Environment.GetEnvironmentVariable("bpAuto_SFTPPassword", EnvironmentVariableTarget.User)));
-
-            dbConnection = new OracleConnection(strConnectionString);
-            sftpConnection = new SftpClient(sftpConnectionString);
 
             try
             {

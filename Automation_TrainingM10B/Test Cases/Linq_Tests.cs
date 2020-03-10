@@ -109,8 +109,6 @@ namespace Automation_TrainingM10B.Test_Cases
                                                                    new MultiElement() { str = "is", integer = 99},
                                                                    new MultiElement() { str = "training", integer = 50},};
 
-            bool output = true;
-
 
             List<string> selectedStrings = values.Select(x => x.str).ToList();
 

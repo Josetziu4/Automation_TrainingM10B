@@ -20,8 +20,6 @@ namespace Automation_TrainingM10B.Base_Files
     class APIUtilites 
     {
         public string endpoint = "http://dummy.restapiexample.com/api/v1/";
-       
-
         HttpWebRequest HttpRequest;
         HttpWebResponse HttpResponse;
 
@@ -31,14 +29,14 @@ namespace Automation_TrainingM10B.Base_Files
 
         string Payload;
 
-        //METHODS//
+            //METHODS//
 
-        //Get Method//
-        public void FnGet(string pstrGet)
+            //Get Method//
+            public void FnGet(string pstrGet)
         {
             try
             {
-                HttpRequest = (HttpWebRequest)WebRequest.Create(endpoint + pstrGet);
+                HttpRequest = (HttpWebRequest)WebRequest.Create(endpoint+pstrGet);
                 HttpRequest.Method = "GET";
                 HttpRequest.ContentType = "application/json";
                 HttpRequest.KeepAlive = false;
@@ -62,12 +60,12 @@ namespace Automation_TrainingM10B.Base_Files
 
 
         //Post Method//
-        public void FnPost(string pstrPost)
+        public void FnPost(string pstrPost, string pstrbody)
         {
             try
             {
-                string Payload = "{ \"name\":\"ExM10\",\"salary\":\"320\",\"age\":\"27\"}";
-
+                string body = pstrbody;
+                
                 HttpRequest = (HttpWebRequest)WebRequest.Create(endpoint + pstrPost);
                 HttpRequest.Method = "POST";
                 HttpRequest.ContentType = "application/json";
@@ -78,7 +76,7 @@ namespace Automation_TrainingM10B.Base_Files
                 using (DataStream = HttpRequest.GetRequestStream())
                 {
                     DataWriter = new StreamWriter(DataStream);
-                    DataWriter.Write(Payload);
+                    DataWriter.Write(body);
                     DataWriter.Flush();
                 }
 
@@ -102,8 +100,8 @@ namespace Automation_TrainingM10B.Base_Files
         public void FnWrite()
         {
             HttpResponse.Close();
-
             Console.WriteLine(Payload);
+           
         }
 
 

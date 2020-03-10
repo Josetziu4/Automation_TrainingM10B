@@ -20,8 +20,8 @@ namespace Automation_TrainingM10B.Test_Cases
         //Get API Test//
         [Test]
         public void Get()
-        {
-            objTest.FnGet("employee");
+        {           
+            objTest.FnGet("employees");
             objTest.FnWrite();
         }    
 
@@ -29,8 +29,7 @@ namespace Automation_TrainingM10B.Test_Cases
         [Test]
         public void Post()
         {
-            
-            objTest.FnPost("create");
+            objTest.FnPost("create", "{ \"name\":\"ExM10\",\"salary\":\"320\",\"age\":\"27\"}");//api , body//
             objTest.FnWrite();
 
         }

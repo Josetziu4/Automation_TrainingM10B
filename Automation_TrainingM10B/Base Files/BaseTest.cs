@@ -20,6 +20,7 @@ namespace Automation_TrainingM10B.Base_Files
         public string url;
         public string username;
         public string password;
+        public string endpoint;
 
         public ReportManager manager;
         public ExtentV3HtmlReporter htmlReporter;
@@ -43,6 +44,7 @@ namespace Automation_TrainingM10B.Base_Files
             url = Environment.GetEnvironmentVariable("url", EnvironmentVariableTarget.User);
             username = Environment.GetEnvironmentVariable("username", EnvironmentVariableTarget.User);
             password = Environment.GetEnvironmentVariable("password", EnvironmentVariableTarget.User);
+            endpoint = Environment.GetEnvironmentVariable("endpoint", EnvironmentVariableTarget.User);
 
             manager = new ReportManager();
 

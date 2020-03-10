@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -11,51 +12,67 @@ namespace Automation_TrainingM10B.Base_Files
 {
     class APIUtilities
     {
-        //VARIABLE
-        HttpWebRequest objHttpRequest;
-        HttpWebResponse objHttpResponse;
+        //VARIABLES
+        public HttpWebRequest objHttpRequest;
+        public HttpWebResponse objHttpResponse;
         Stream DataStream;
         StreamReader DataReader;
         StreamWriter DataWriter;
-        string Payload;
+        //BASE URL of the API
+        private static string strApiUrl = ConfigurationManager.AppSettings.Get("apiurl");
+        private string Payload;
 
-        [OneTimeSetUp]
+        //METHODS
+        [OneTimeSetUp] //At the start of everything
         public void GetTest()
         {
-
         }
 
         [SetUp]
         public void BeforeTest()
         {
-
         }
 
         [TearDown]
         public void AfterTest()
         {
-            
+            fnWriteTheResponse(objHttpResponse); //We receive the response to print
         }
 
-        [OneTimeTearDown]
+        [OneTimeTearDown] // at the end of everything
         public void AfterAllTests()
         {
-
         }
 
-        //This method allows us to send the url of the API and return the response as an Object
-        public HttpWebResponse fnGetMethod(string pstrAPIUrl)
+        //GET
+        public HttpWebResponse fnGetMethod(string pstrGetAPI)
         {          
-            objHttpRequest = (HttpWebRequest)WebRequest.Create(pstrAPIUrl); // we send the URL of the GET API
-            objHttpRequest.Method = "GET";
+            objHttpRequest = (HttpWebRequest)WebRequest.Create(strApiUrl+ pstrGetAPI); // we send the EndPoint of the GET API
             objHttpRequest.ContentType = "application/json";
             objHttpRequest.KeepAlive = false;
+            objHttpRequest.Method = "GET";
+            objHttpResponse = (HttpWebResponse)objHttpRequest.GetResponse();
+            return objHttpResponse;
+        }
+
+        //POST
+        public HttpWebResponse fnPostMethod(string pstrPostAPI, string pbody)
+        {
+            objHttpRequest = (HttpWebRequest)WebRequest.Create(strApiUrl + pstrPostAPI);
+            objHttpRequest.ContentType = "application/json";
+            objHttpRequest.KeepAlive = false;
+            objHttpRequest.Method = "POST";
+            using (DataStream = objHttpRequest.GetRequestStream())
+            {
+                DataWriter = new StreamWriter(DataStream);
+                DataWriter.Write(pbody);
+            }
             objHttpResponse = (HttpWebResponse)objHttpRequest.GetResponse();
             return objHttpResponse;
         }
 
         //This method allows you to console write the response contained in the Response Object
-        public string fnWriteTheResponse(HttpWebResponse pobjHttpResponse)
+        private string fnWriteTheResponse(HttpWebResponse pobjHttpResponse)
         {
             using (DataStream = pobjHttpResponse.GetResponseStream())
             {
@@ -66,18 +83,6 @@ namespace Automation_TrainingM10B.Base_Files
             Console.WriteLine(Payload);
             return Payload;
         }
-
-
-        public void fnPostMethod()
-        {
-
-        }
-
-        public void fnWriteTheResponse()
-        {
-
-        }
-
 
     }
 }

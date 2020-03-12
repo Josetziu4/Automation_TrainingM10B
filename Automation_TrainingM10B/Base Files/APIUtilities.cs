@@ -21,6 +21,10 @@ namespace Automation_TrainingM10B.Base_Files
         //BASE URL of the API
         private static string strApiUrl = ConfigurationManager.AppSettings.Get("apiurl");
         private string Payload;
+        //GENERATE RANDOM STRING
+        StringBuilder str_build = new StringBuilder();
+        Random random = new Random();
+        char letter;
 
         //METHODS
         [OneTimeSetUp] //At the start of everything
@@ -84,5 +88,25 @@ namespace Automation_TrainingM10B.Base_Files
             return Payload;
         }
 
+        //This method generates a random string
+        public string fnRandomString(int plenght)
+        {
+            for (int i = 0; i < plenght; i++)
+            {
+                double flt = random.NextDouble();
+                int shift = Convert.ToInt32(Math.Floor(25 * flt));
+                letter = Convert.ToChar(shift + 65);
+                str_build.Append(letter);
+            }
+            return str_build.ToString();
+        }
+
+        //This method generates random number
+
+        public int fnRandomNumber(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
+        }
     }
 }

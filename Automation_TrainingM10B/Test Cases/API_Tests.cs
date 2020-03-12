@@ -16,11 +16,9 @@ namespace Automation_TrainingM10B.Test_Cases
     {
         HttpWebRequest HttpRequest;
         HttpWebResponse HttpResponse;
-
         Stream DataStream;
         StreamReader DataReader;
         StreamWriter DataWriter;
-
         string Payload;
 
         [Test]
@@ -30,7 +28,6 @@ namespace Automation_TrainingM10B.Test_Cases
             HttpRequest.Method = "GET";
             HttpRequest.ContentType = "application/json";
             HttpRequest.KeepAlive = false;
-
             HttpResponse = (HttpWebResponse)HttpRequest.GetResponse();
             GetResponse response;
 

@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base Files\APIUtilities.cs" />
     <Compile Include="Base Files\BaseTest.cs" />
     <Compile Include="Base Files\QueryUtils.cs" />
     <Compile Include="Data Models\Member_Model.cs" />
@@ -103,6 +104,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\ReportManager.cs" />
+    <Compile Include="Test Cases\apiTest.cs" />
+    <Compile Include="Test Cases\API_Test.cs" />
     <Compile Include="Test Cases\Data_Driven_Test.cs" />
     <Compile Include="Test Cases\Data_Model_Tests.cs" />
     <Compile Include="Test Cases\Lambda_Tests.cs" />

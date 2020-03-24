@@ -40,9 +40,9 @@ namespace Automation_TrainingM10B.Base_Files
         [OneTimeSetUp]
         public void BeforeAllTests()
         {
-            url = Environment.GetEnvironmentVariable("url", EnvironmentVariableTarget.User);
+            /*url = Environment.GetEnvironmentVariable("url", EnvironmentVariableTarget.User);
             username = Environment.GetEnvironmentVariable("username", EnvironmentVariableTarget.User);
-            password = Environment.GetEnvironmentVariable("password", EnvironmentVariableTarget.User);
+            password = Environment.GetEnvironmentVariable("password", EnvironmentVariableTarget.User);*/
 
             manager = new ReportManager();
 
@@ -53,7 +53,7 @@ namespace Automation_TrainingM10B.Base_Files
 
             exTestSuite = extent.CreateTest(TestContext.CurrentContext.Test.Name);
 
-            strConnectionString = $"User Id= lrodriguez;" +
+            /*strConnectionString = $"User Id= lrodriguez;" +
                                   $"password= Rodriguez1!;" +
                                   $"Data Source= tytora-n01.brierley.com:1521/bpqa01;" +
                                   $"Pooling=false;";
@@ -61,11 +61,11 @@ namespace Automation_TrainingM10B.Base_Files
             sftpConnectionString = new ConnectionInfo("tytora-n01", 22, "lrodriguez", new PasswordAuthenticationMethod("lrodriguez", "Diciembre2014!"));
             sftpConnection = new SftpClient(sftpConnectionString);
 
-            dbConnection = new OracleConnection(strConnectionString);
+            dbConnection = new OracleConnection(strConnectionString);*/
                 try
             {
-                dbConnection.Open();
-                sftpConnection.Connect();
+                //dbConnection.Open();
+                //sftpConnection.Connect();
             }
             catch(Exception ex)
             {
@@ -76,7 +76,7 @@ namespace Automation_TrainingM10B.Base_Files
         public void BeforeTest()
         {
             driver = new ChromeDriver();
-            driver.Url = url;
+            //driver.Url = url;
 
             exTestCase = exTestSuite.CreateNode(TestContext.CurrentContext.Test.Name);
         }
@@ -90,8 +90,8 @@ namespace Automation_TrainingM10B.Base_Files
         [OneTimeTearDown]
         public void AfterAllTests()
         {
-            dbConnection.Close();
-            sftpConnection.Disconnect();
+            //dbConnection.Close();
+            //sftpConnection.Disconnect();
             extent.Flush();
             //driver.Quit();
         }

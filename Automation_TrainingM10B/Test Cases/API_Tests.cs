@@ -78,6 +78,13 @@ namespace Automation_TrainingM10B.Test_Cases
         [Test]
         public void PostTest()
         {
+            Test test = new Test();
+
+            test.name = "Test";
+            test.age = "19";
+            test.salary = "123";
+
+            string serialize = JsonConvert.SerializeObject(test);
 
             string Body = "{ \"name\":\"test\",\"salary\":\"123\",\"age\":\"23\"}";
 
@@ -85,6 +92,8 @@ namespace Automation_TrainingM10B.Test_Cases
             HttpRequest.Method = "POST";
             HttpRequest.ContentType = "application/json";
             HttpRequest.KeepAlive = false;
+
+            PostResponse response;
 
             using (DataStream = HttpRequest.GetRequestStream())
             {
@@ -99,6 +108,7 @@ namespace Automation_TrainingM10B.Test_Cases
             {
                 DataReader = new StreamReader(DataStream);
                 Payload = DataReader.ReadToEnd();
+                response = JsonConvert.DeserializeObject<PostResponse>(Payload);
             }
             HttpResponse.Close();
 
@@ -115,10 +125,32 @@ namespace Automation_TrainingM10B.Test_Cases
         public string profile_image { get; set; }
     }
 
+    public class PostEmployee
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string salary { get; set; }
+        public string age { get; set; }
+    }
+
+    public class Test
+    {
+        public string name { get; set; }
+        public string salary { get; set; }
+        public string age { get; set; }
+
+    }
+
     public class GetResponse
     {
         public string status { get; set; }
         public List<Employee> data { get; set; }
+    }
+
+    public class PostResponse
+    {
+        public string status { get; set; }
+        public PostEmployee data { get; set; }
     }
 
     public class Employee_File

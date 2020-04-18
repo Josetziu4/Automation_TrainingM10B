@@ -9,7 +9,7 @@ namespace Automation_TrainingM10B
 {
     class Program
     {
-        /*   static void Main(string[] args)
+           static void Main(string[] args)
            {
            //////////////////////////////////////////////////////////
                //Exercise 01
@@ -28,13 +28,7 @@ namespace Automation_TrainingM10B
                Console.Write("\n------------------------------------------------------\n");
                //Write Your code
                Console.WriteLine(arr1.Length);
-               Console.ReadLine();
-           }*/
-
-
-
-        static void Main(string[] args)
-        {
+//               Console.ReadLine();
 
             //////////////////////////////////////////////////////////
             //Exercise 02
@@ -42,7 +36,7 @@ namespace Automation_TrainingM10B
             ///
             //Directory of Files
             string[] dirfiles = Directory.GetFiles("C:/LINQFiles/");
-            
+
             Console.Write("\nLINQ : Calculate the Size of File : ");
             Console.Write("\n------------------------------------\n");
             //Write Your code
@@ -52,87 +46,88 @@ namespace Automation_TrainingM10B
             Console.WriteLine("The file size is {0} Bytes", length);
             Console.WriteLine("The file size is {0} Bytes", length2);
             Console.WriteLine("The file size is {0} Bytes", length3);
-            Console.ReadLine();
-        }
 
 
-        /* static void Main()
-         {
+            // Second part: Query creation.
+            var nFilesize =
+                from vSize in dirfiles
+                select vSize;
+
+
+            foreach (string vSize in nFilesize)
+            {
+                Console.Write("{0} ", vSize);
+                Console.Write("\n");
+            }
+
+//            Console.ReadLine();
+
 
             //////////////////////////////////////////////////////////
             //Exercise 03
             //////////////////////////////////////////////////////////
-            
-             // The first part is Data source.
-             int[] n1 = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-             Console.Write("\nBasic structure of LINQ : ");
-             Console.Write("\n---------------------------");
-             //Write Your code
 
-             // Second part: Query creation.
-             var nQuery =
-                 from vNum in n1
-                 select vNum;
+            // The first part is Data source.
+            int[] n1 = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            Console.Write("\nBasic structure of LINQ : ");
+            Console.Write("\n---------------------------");
+            //Write Your code
 
-             // Third part: Query execution.
+            // Second part: Query creation.
+            var nQuery =
+                from vNum in n1
+                select vNum;
 
-             Console.Write("\nNumbers: \n");
-             foreach (int vNum in nQuery)
-             {
-                 Console.Write("{0} ", vNum);
-             }
-             Console.Write("\n\n");
-             Console.ReadLine();
-         }*/
+            // Third part: Query execution.
 
-        /* 
-         * static void Main(string[] args)
-         {
+            Console.Write("\nNumbers: \n");
+            foreach (int vNum in nQuery)
+            {
+                Console.Write("{0} ", vNum);
+            }
+            Console.Write("\n\n");
+//            Console.ReadLine();
+
 
             //////////////////////////////////////////////////////////
             //Exercise 04
             //////////////////////////////////////////////////////////
-            
-
-             string[] dayWeek = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-             Console.Write("\nLINQ : Display the name of the days of a week : ");
-             Console.Write("\n------------------------------------------------\n");
-             //Write Your code
-
-             var days = from WeekDay in dayWeek
-                        select WeekDay;
-             foreach (var WeekDay in days)
-             {
-                 Console.WriteLine(WeekDay);
-             }
-             Console.WriteLine();
-             Console.ReadLine();
-         }*/
 
 
+            string[] dayWeek = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            Console.Write("\nLINQ : Display the name of the days of a week : ");
+            Console.Write("\n------------------------------------------------\n");
+            //Write Your code
 
-        /* static void Main(string[] args)
-         {
+            var days = from WeekDay in dayWeek
+                       select WeekDay;
+            foreach (var WeekDay in days)
+            {
+                Console.WriteLine(WeekDay);
+            }
+            Console.WriteLine();
+//            Console.ReadLine();
+
 
             //////////////////////////////////////////////////////////
             //Exercise 05
             //////////////////////////////////////////////////////////
-            
 
-             var arr1 = new[] { 3, 9, 2, 8, 6, 5 };
-             Console.Write("\nLINQ : Print the number and its square from an array: ");
-             Console.Write("\n------------------------------------------------------------------------\n");
-             //Write Your code
 
-             var sqNum = from int Number in arr1
+            var arr2 = new[] { 3, 9, 2, 8, 6, 5 };
+            Console.Write("\nLINQ : Print the number and its square from an array: ");
+            Console.Write("\n------------------------------------------------------------------------\n");
+            //Write Your code
+
+            var sqNum = from int Number in arr2
                         let SqrNo = Number * Number
                         select new { Number, SqrNo };
 
-             foreach (var a in sqNum)
-             Console.WriteLine(a);
-             Console.ReadLine();
-
-         }*/
+            foreach (var a in sqNum)
+            Console.WriteLine(a);
+            Console.ReadLine();
+        }
+               
 
     }
 }
